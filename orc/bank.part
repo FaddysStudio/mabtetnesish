@@ -1,0 +1,89 @@
+instr bank
+
+SName strget p4
+SExtension strget p5
+
+SBank sprintf "bank/%s", SName
+
+iLength strlen SExtension
+
+if iLength == 0 then
+
+SExtension = ".wav"
+
+endif
+
+SSamples [] directory SBank, SExtension
+
+iSize lenarray SSamples
+
+chnset iSize, SBank
+
+iIndex = 0
+
+while iIndex < iSize do
+
+SSample sprintf "%s/%d", SBank, iIndex
+
+chnset SSamples [ iIndex ], SSample
+
+iIndex += 1
+
+od
+
+endin
+
+giPlayback = 0
+
+instr playback
+
+giPlayback += 1
+
+p1 = int ( p1 ) + giPlayback / 1000000
+
+SName strget p4
+SBank sprintf "bank/%s", SName
+
+iSize chnget SBank
+
+SSample sprintf "%s/%d", SBank, p5 % iSize
+
+SFile chnget SSample
+
+iChannels filenchnls SFile
+
+iSkip = p6
+
+SKey strget p7
+
+iLength strlen SKey
+
+if iLength == 1 then
+
+SNote sprintf "4%s", SKey
+
+iIndex ntom SNote
+
+iDetune = cent ( ( iIndex % 12 ) * 100 )
+
+else
+
+iDetune = 1
+
+endif
+
+if iChannels == 1 then
+
+aSample diskin2 SFile, iDetune, iSkip
+
+elseif iChannels == 2 then
+
+aSample, aSample diskin2 SFile, iDetune, iSkip
+
+endif
+
+chnmix aSample, "out"
+
+aSample = 0
+
+endin

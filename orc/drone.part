@@ -1,0 +1,28 @@
+giSineWaveform ftgen 0, 0, 256, 10, 1
+
+giInstance init 0
+
+instr drone
+
+giInstance += 1
+p1 = int ( p1 ) + giInstance / 1000
+
+p3 = -p3
+
+$parameters
+
+if iAmplitude == 0 then
+
+iAmplitude = .25
+
+endif
+
+kEnvelope poscil .25, 1 / iBeat
+
+aNote foscil iAmplitude, iFrequency, 1, 18, kEnvelope * 20, giSineWaveform
+
+aNote tonex aNote, iFrequency, 2
+
+$mix
+
+endin

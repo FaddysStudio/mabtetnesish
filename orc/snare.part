@@ -1,0 +1,27 @@
+instr tak
+
+aNote = 0
+
+aHighSubAmplitude linseg 0, 1/128, 1, 1/128, .25, 1/16, 0
+aHighSubFrequency linseg cpspch ( 12.05 ), 1/256, cpspch ( 8.05 )
+
+aHighSub poscil aHighSubAmplitude, aHighSubFrequency
+
+aNote += aHighSub
+
+aTambourine tambourine 1, 1/128, 32, 1/4, 1
+
+aTambourine = aTambourine
+
+aNote += aTambourine
+
+aGogobell gogobel 1, cpspch ( 8.05 ), .5, .5, 1, 6.0, 0.3, 2
+
+aNote += aGogobell
+
+aNote clip aNote, 0, 1
+
+chnmix aNote, "left"
+chnmix aNote, "right"
+
+endin

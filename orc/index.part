@@ -1,0 +1,8 @@
+#include "mixer.part"
+#include "keyboard.part"
+#include "key.part"
+#include "chord.part"
+
+#include "percussion.part"
+#include "drone.part"
+#include "pluck.part"

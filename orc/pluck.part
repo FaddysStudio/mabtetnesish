@@ -1,0 +1,29 @@
+massign 0, "pluck"
+
+giSineWaveform ftgen 0, 0, 256, 10, 1
+
+giInstance init 0
+
+instr pluck
+
+giInstance += 1
+p1 = int ( p1 ) + giInstance / 1000000
+
+$parameters
+
+if iAmplitude == 0 then
+
+iAmplitude = .1
+
+endif
+
+kEnvelope madsr iBeat / 32, iBeat / 16, 0, 0; iAmplitude / 8, iBeat / 4
+
+aNote foscil kEnvelope, iFrequency, 1, kEnvelope * 3, kEnvelope * 0, giSineWaveform
+
+;aNote tonex aNote, iFrequency, 7
+;aNote atone aNote, iFrequency
+
+$mix
+
+endin

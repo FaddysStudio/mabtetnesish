@@ -1,0 +1,5 @@
+i "out" 0 -1
+
+i "mix" 0 -1 "drone" .65
+i "mix" 0 -1 "percussion" .35
+i "mix" 0 -1 "arpeggiator" .25

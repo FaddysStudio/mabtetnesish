@@ -1,0 +1,10 @@
+v [1/4]
+
+{ 36000 phase
+
+i "kick" [ $phase * 8 ] 4 "percussion" "2C" .3
+
+i "kick" ^+3 [1/16] "percussion" "3E" .01
+i . ^+3 .
+
+}

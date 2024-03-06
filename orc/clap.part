@@ -1,0 +1,19 @@
+instr clap
+
+aAmplitude linseg 0, 1/512, 1, 1/256, .25, 1/512, 0
+
+aNote rand aAmplitude
+
+aFrequency linseg cpspch ( 7.00 ), 1/512, cpspch ( 10.00 ), 1/256, cpspch ( 8.00 )
+
+aNote butterlp aNote, aFrequency
+;, aBand
+
+aSnatch poscil aAmplitude, aFrequency
+
+aNote += aSnatch
+
+chnmix aNote, "left"
+chnmix aNote, "right"
+
+endin

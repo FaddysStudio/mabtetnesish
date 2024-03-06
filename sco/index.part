@@ -1,0 +1,10 @@
+#include "tempo.part"
+#include "faddys.part"
+#include "mixer.part"
+
+i "key" 0 1 "Eb"
+
+#include "arpeggiator.part"
+#include "percussion.part"
+#include "drone.part"
+;#include "chords.part"

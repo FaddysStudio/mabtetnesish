@@ -1,0 +1,65 @@
+opcode ocps, i, i
+
+iNote xin
+
+iFrequency init cpsmidinn ( iNote )
+
+xout iFrequency
+
+endop
+
+/*
+
+print iFrequency
+
+STuning sprintf "tuning/%d", iNote % 12
+iDetune chnget STuning
+
+print iDetune
+
+iStep chnget "tuning/key"
+
+print iStep
+
+xout iFrequency * cent ( iDetune ) * cent ( iStep )
+
+endop
+
+*/
+
+opcode ostep, i, S
+
+SKey xin
+
+SNote sprintf "4%s", SKey
+iIndex ntom SNote
+
+xout iIndex % 12
+
+endop
+
+giBeat init 0
+
+instr key
+
+giBeat = abs ( p3 )
+
+p3 = 0
+
+SKey strget p4
+iStep ostep SKey
+
+chnset iStep, "tuning/key"
+
+endin
+
+instr tuning
+
+SKey strget p4
+iStep ostep SKey
+
+STuning sprintf "tuning/%d", iStep
+
+chnset p5, STuning
+
+endin

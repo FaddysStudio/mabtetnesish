@@ -1,0 +1,13 @@
+instr mandolin
+
+SPitch strget p4
+iFrequency ntof SPitch
+iAmplitude = p5
+iSize = p6
+iDetune = p7
+
+aNote mandol iAmplitude, iFrequency * giDetune, .4, iDetune, 0.99, iSize, 1, 220
+
+chnmix aNote, "out"
+
+endin

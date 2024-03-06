@@ -1,0 +1,21 @@
+instr chord
+
+STrack strget p4
+SInstrument strget p5
+
+iIndex = 6
+iParameters pcount
+
+while iIndex <= iParameters do
+
+SNote strget p ( iIndex )
+
+SScore sprintf "i \"%s\" 0 %f \"%s\" \"%s\"", SInstrument, p3, STrack, SNote
+
+scoreline_i SScore
+
+iIndex += 1
+
+od
+
+endin

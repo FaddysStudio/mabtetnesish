@@ -1,0 +1,5 @@
+instr keyboard
+
+prints "Yallah?\n"
+
+endin

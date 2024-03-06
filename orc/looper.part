@@ -1,0 +1,15 @@
+instr looper
+
+SName strget p4
+SKey strget p7
+
+aSample subinstr "playback", SName, p5, p6, SKey
+
+iDuration = abs ( p3 )
+iCrossfade = p8
+
+aLoop, k_ sndloop aSample, 1, 1, iDuration, iCrossfade
+
+chnmix aLoop, "out"
+
+endin

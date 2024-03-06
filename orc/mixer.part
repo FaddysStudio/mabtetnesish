@@ -1,0 +1,29 @@
+giInstance = 0
+
+instr mix
+
+giInstance += 1
+p1 = int ( p1 ) + giInstance / 1000000
+
+STrack strget p4
+aOutput chnget STrack
+
+aOutput clip aOutput, 1, 1
+
+chnmix aOutput * p5, "out"
+
+chnclear STrack
+
+endin
+
+instr out
+
+aMix chnget "out"
+
+aMix clip aMix, 0, 1
+
+outs aMix, aMix
+
+chnclear "out"
+
+endin

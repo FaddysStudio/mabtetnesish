@@ -1,0 +1,47 @@
+/*
+alex_gm.sf2
+m3_Instruments.sf2
+nintendo_soundfont.sf2
+Roland_SC-88.sf2
+SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2
+Touhou.sf2
+TURKISH-ARAB2.sf2
+*/
+
+giSF sfload "sf/Roland_SC-88.sf2"
+sfplist giSF
+
+massign 0, "play"
+
+instr play
+
+SNote strget p4	
+iLength strlen SNote
+
+iNumber init 0
+
+if iLength > 0 then
+
+iNumber ntom SNote
+
+else
+
+midinoteonkey iNumber, 0
+
+endif
+
+STuning sprintf "tuning/%d", iNumber % 12
+iDetune chnget STuning
+
+iStep chnget "tuning/key"
+
+kFrequency init cpsmidinn ( int ( iNumber ) ) * cent ( iDetune + iStep * 100 )
+
+kAmplitude linsegr 1, 1, 1, .1, 0
+kAmplitude /= 5000
+
+aNote sfinstrm 1, 60, kAmplitude, kFrequency, 88, giSF, 1
+
+chnmix aNote, "out"
+
+endin

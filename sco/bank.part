@@ -1,0 +1,23 @@
+#define bank #i "bank" 0 0#
+
+$bank "gtr"
+$bank "house"
+$bank "gabbalouder"
+$bank "future"
+$bank "drum"
+$bank "drumtraks"
+$bank "bd"
+$bank "hc"
+$bank "sn"
+
+$bank "bass"
+$bank "bass1"
+$bank "auto"
+$bank "808" ".WAV"
+$bank "808bd" ".WAV"
+$bank "808hc"
+$bank "808ht"
+$bank "808lt"
+$bank "808lc"
+$bank "808mc"
+$bank "808mt"

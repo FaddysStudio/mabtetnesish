@@ -1,0 +1,19 @@
+#define C #C#
+
+#define D #D+25#
+;$tuning "D" 25
+
+#define E #E-25#
+$tuning "E" -100
+
+#define F #F+25#
+;$tuning "F"0
+
+#define G #G+25#
+;$tuning "G" 25
+
+#define A #A-25#
+$tuning "A" -100
+
+#define B #B+25#
+;$tuning "B" 25

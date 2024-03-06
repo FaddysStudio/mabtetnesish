@@ -1,0 +1,43 @@
+opcode maqamStep, 0, Sii
+
+SMaqam, iStep, iDetune xin
+
+iRatio = 2 ^ ( ( iDetune + iStep * 2 ) / 24 )
+
+SStep sprintf "maqam-%s-step-%d", SMaqam, iStep
+
+chnset iRatio, SStep
+
+endop
+
+opcode maqam, 0, S
+
+SMaqam xin
+
+iMaqam [] init 16
+
+iMaqam [ 0 ] = 12
+iMaqam [ 1 ] = 2
+iMaqam [ 2 ] = cpsmidinn ( 60 )
+iMaqam [ 3 ] = 60
+
+iStep = 0
+
+while iStep < 12 do
+
+SStep sprintf "maqam-%s-step-%d", SMaqam, iStep
+iRatio chnget SStep
+
+iMaqam [ iStep + 4 ] = iRatio
+
+iStep += 1
+
+od
+
+iFT ftgen 0, 0, 64, -2, iMaqam
+
+SFT sprintf "maqam-%s-ft", SMaqam
+
+chnset iFT, SFT
+
+endop
